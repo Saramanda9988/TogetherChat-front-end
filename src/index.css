@@ -1,0 +1,170 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 自定义滚动条样式 */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.3);
+  border-radius: 3px;
+  transition: background 0.2s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(148, 163, 184, 0.5);
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* Firefox 滚动条样式 */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(148, 163, 184, 0.3) transparent;
+}
+
+/* 隐藏滚动条但保持滚动功能的工具类 */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* 自定义细滚动条 */
+.scrollbar-thin::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.2);
+  border-radius: 2px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb:hover {
+  background: rgba(148, 163, 184, 0.4);
+}
+
+/* 主题过渡动画 */
+* {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* 主题样式 */
+.light {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+  color: rgb(15 23 42);
+}
+
+.dark {
+  --tw-bg-opacity: 1;
+  background-color: rgb(15 23 42 / var(--tw-bg-opacity));
+  color: rgb(255 255 255);
+}
+
+/* 主题特定的类 */
+.light .dark\:bg-slate-900 {
+  background-color: rgb(248 250 252) !important;
+}
+
+.light .dark\:bg-slate-800 {
+  background-color: rgb(241 245 249) !important;
+}
+
+.light .dark\:bg-slate-700 {
+  background-color: rgb(226 232 240) !important;
+}
+
+.light .dark\:text-white {
+  color: rgb(15 23 42) !important;
+}
+
+.light .dark\:text-slate-400 {
+  color: rgb(100 116 139) !important;
+}
+
+.light .dark\:text-slate-300 {
+  color: rgb(71 85 105) !important;
+}
+
+.light .dark\:border-slate-700 {
+  border-color: rgb(226 232 240) !important;
+}
+
+.light .dark\:border-slate-600 {
+  border-color: rgb(203 213 225) !important;
+}
+
+.light .dark\:hover\:bg-slate-800:hover {
+  background-color: rgb(241 245 249) !important;
+}
+
+.light .dark\:hover\:bg-slate-700:hover {
+  background-color: rgb(226 232 240) !important;
+}
+
+.light .dark\:hover\:text-white:hover {
+  color: rgb(15 23 42) !important;
+}
+
+.light .dark\:hover\:border-slate-500:hover {
+  border-color: rgb(148 163 184) !important;
+}
+
+/* 浅色主题特定样式 */
+.light .light\:bg-white {
+  background-color: rgb(255 255 255) !important;
+}
+
+.light .light\:bg-gray-100 {
+  background-color: rgb(243 244 246) !important;
+}
+
+.light .light\:bg-gray-300 {
+  background-color: rgb(209 213 219) !important;
+}
+
+.light .light\:text-gray-900 {
+  color: rgb(17 24 39) !important;
+}
+
+.light .light\:text-gray-600 {
+  color: rgb(75 85 99) !important;
+}
+
+.light .light\:text-gray-700 {
+  color: rgb(55 65 81) !important;
+}
+
+.light .light\:border-gray-200 {
+  border-color: rgb(229 231 235) !important;
+}
+
+.light .light\:border-gray-300 {
+  border-color: rgb(209 213 219) !important;
+}
+
+.light .light\:hover\:bg-gray-100:hover {
+  background-color: rgb(243 244 246) !important;
+}
+
+.light .light\:hover\:text-gray-900:hover {
+  color: rgb(17 24 39) !important;
+}
+
+.light .light\:hover\:border-gray-400:hover {
+  border-color: rgb(156 163 175) !important;
+}
