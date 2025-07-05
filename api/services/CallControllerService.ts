@@ -3,6 +3,7 @@
 /* tslint:disable */
 /* eslint-disable */
 import type { ApiResultListSessionResponse } from '../models/ApiResultListSessionResponse';
+import type { ApiResultSessionInfoResponse } from '../models/ApiResultSessionInfoResponse';
 import type { ApiResultVoid } from '../models/ApiResultVoid';
 import type { CallingCancelRequest } from '../models/CallingCancelRequest';
 import type { CallingRequest } from '../models/CallingRequest';
@@ -11,15 +12,15 @@ import type { BaseHttpRequest } from '../core/BaseHttpRequest';
 export class CallControllerService {
     constructor(public readonly httpRequest: BaseHttpRequest) {}
     /**
-     * 发起通话(备用)
+     * 发起通话
      * 发起语音或视频通话
      * @param requestBody
-     * @returns ApiResultVoid OK
+     * @returns ApiResultSessionInfoResponse OK
      * @throws ApiError
      */
     public initiateCall(
         requestBody: CallingRequest,
-    ): CancelablePromise<ApiResultVoid> {
+    ): CancelablePromise<ApiResultSessionInfoResponse> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/capi/call/initiate',
@@ -52,7 +53,7 @@ export class CallControllerService {
         });
     }
     /**
-     * 结束通话(备用)
+     * 结束通话
      * 挂断正在进行的通话
      * @param requestBody
      * @returns ApiResultVoid OK

@@ -1,74 +1,104 @@
-import React, { useState, useEffect } from 'react';
-import { Routes, Route, Navigate } from 'react-router-dom';
-import Sidebar from './components/Sidebar';
-import CallModal from './components/CallModal';
-import Calendar from './components/Calendar';
-import VideoMeeting from './pages/VideoMeetingPage';
-import ChatPage from './pages/ChatPage';
-import Contacts from './components/Contacts';
-import Settings from './components/Settings';
-import { Theme } from './types';
-import { applyTheme, getStoredTheme, setStoredTheme } from './utils/theme';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { AuthProvider } from './contexts/AuthContext';
+import { ProtectedRoute, RedirectAuthenticated } from './components/auth';
+import { LoginPage, RegisterPage, DashboardPage, MeetingPage } from './pages';
 
-const App: React.FC = () => {
-  const [activeSection, setActiveSection] = useState('chat');
-  const [showCallModal, setShowCallModal] = useState(false);
-  const [theme, setTheme] = useState<Theme>('dark');
+// 创建 QueryClient 实例
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      retry: 1,
+      refetchOnWindowFocus: false,
+    },
+  },
+});
 
-  // 主题初始化
-  useEffect(() => {
-    const savedTheme = getStoredTheme();
-    setTheme(savedTheme);
-    applyTheme(savedTheme);
-  }, []);
-
-  const handleThemeChange = (newTheme: Theme) => {
-    setTheme(newTheme);
-    setStoredTheme(newTheme);
-    applyTheme(newTheme);
-  };
-
-  // 监听系统主题变化
-  useEffect(() => {
-    if (theme === 'auto') {
-      const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-      const handleChange = () => applyTheme('auto');
-      
-      mediaQuery.addEventListener('change', handleChange);
-      return () => mediaQuery.removeEventListener('change', handleChange);
-    }
-  }, [theme]);
-
-
-
+function App() {
   return (
-    <div className="h-screen bg-slate-900 dark:bg-slate-900 light:bg-white flex overflow-hidden">
-      <Sidebar 
-        activeSection={activeSection} 
-        setActiveSection={setActiveSection} 
-      />
-      
-      <div className="flex-1 overflow-hidden">
-        <Routes>
-          <Route path="/chat/*" element={<ChatPage />} />
-          <Route path="/meeting/*" element={<VideoMeeting />} />
-          <Route path="/calendar" element={<Calendar />} />
-          <Route path="/contacts" element={<Contacts />} />
-          <Route path="/settings" element={<Settings theme={theme} setTheme={handleThemeChange} />} />
-          <Route path="/" element={<Navigate to="/chat" replace />} />
-          <Route path="*" element={<Navigate to="/chat" replace />} />
-        </Routes>
-      </div>
+    <QueryClientProvider client={queryClient}>
+      <AuthProvider>
+        <Router>
+          <div className="App">
+            <Routes>
+              {/* 默认路由重定向 */}
+              <Route path="/" element={<Navigate to="/dashboard" replace />} />
+              
+              {/* 认证路由 */}
+              <Route 
+                path="/login" 
+                element={
+                  <RedirectAuthenticated>
+                    <LoginPage />
+                  </RedirectAuthenticated>
+                } 
+              />
+              <Route 
+                path="/register" 
+                element={
+                  <RedirectAuthenticated>
+                    <RegisterPage />
+                  </RedirectAuthenticated>
+                } 
+              />
+              
+              {/* 受保护的路由 */}
+              <Route 
+                path="/dashboard" 
+                element={
+                  <ProtectedRoute>
+                    <DashboardPage />
+                  </ProtectedRoute>
+                } 
+              />
+              <Route 
+                path="/meeting" 
+                element={
+                  <ProtectedRoute>
+                    <MeetingPage />
+                  </ProtectedRoute>
+                } 
+              />
+              <Route 
+                path="/meeting/:id" 
+                element={
+                  <ProtectedRoute>
+                    <MeetingPage />
+                  </ProtectedRoute>
+                } 
+              />
+              
+              {/* 404 页面 */}
+              <Route path="*" element={<NotFoundPage />} />
+            </Routes>
+          </div>
+        </Router>
+      </AuthProvider>
+    </QueryClientProvider>
+  );
+}
 
-      <CallModal
-        isOpen={showCallModal}
-        onClose={() => setShowCallModal(false)}
-        callerName="张三"
-        isVideoCall={true}
-        isIncoming={true}
-      />
+// 404 页面组件
+function NotFoundPage() {
+  return (
+    <div className="min-h-screen flex items-center justify-center bg-gray-50">
+      <div className="text-center">
+        <div className="w-24 h-24 mx-auto mb-6 bg-gray-300 rounded-full flex items-center justify-center">
+          <svg className="w-12 h-12 text-gray-600" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
+          </svg>
+        </div>
+        <h2 className="text-2xl font-bold text-gray-900 mb-4">页面未找到</h2>
+        <p className="text-gray-600 mb-6">您访问的页面不存在</p>
+        <a 
+          href="/dashboard" 
+          className="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+        >
+          返回首页
+        </a>
+      </div>
     </div>
   );
-};
+}
 
 export default App;

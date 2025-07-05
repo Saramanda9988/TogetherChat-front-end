@@ -19,6 +19,7 @@ export type { ApiResultLoginInfoResponse } from './models/ApiResultLoginInfoResp
 export type { ApiResultMessage } from './models/ApiResultMessage';
 export type { ApiResultObject } from './models/ApiResultObject';
 export type { ApiResultRoomResponse } from './models/ApiResultRoomResponse';
+export type { ApiResultSessionInfoResponse } from './models/ApiResultSessionInfoResponse';
 export type { ApiResultString } from './models/ApiResultString';
 export type { ApiResultUserInfoResponse } from './models/ApiResultUserInfoResponse';
 export type { ApiResultVoid } from './models/ApiResultVoid';
@@ -48,6 +49,7 @@ export type { RoomMemberUpdateRequest } from './models/RoomMemberUpdateRequest';
 export type { RoomPageRequest } from './models/RoomPageRequest';
 export type { RoomResponse } from './models/RoomResponse';
 export type { RoomUpdateRequest } from './models/RoomUpdateRequest';
+export type { SessionInfoResponse } from './models/SessionInfoResponse';
 export type { SessionResponse } from './models/SessionResponse';
 export type { UserInfoResponse } from './models/UserInfoResponse';
 export type { UserLoginRequest } from './models/UserLoginRequest';
