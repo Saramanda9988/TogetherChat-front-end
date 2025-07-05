@@ -5,7 +5,7 @@ import MessageArea from './components/MessageArea';
 import ChatInfo from './components/ChatInfo';
 import CallModal from './components/CallModal';
 import Calendar from './components/Calendar';
-import VideoMeeting from './components/VideoMeeting';
+import VideoMeeting from './pages/VideoMeetingPage';
 import Contacts from './components/Contacts';
 import Settings from './components/Settings';
 import { Chat, Message, Theme } from './types';

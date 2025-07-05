@@ -1,0 +1,2905 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "OpenAPI definition",
+    "version": "v0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8081",
+      "description": "Generated server url"
+    }
+  ],
+  "security": [
+    {
+      "Authorization": []
+    }
+  ],
+  "tags": [
+    {
+      "name": "CallController",
+      "description": "通话相关接口"
+    },
+    {
+      "name": "ChatController",
+      "description": "消息收发，消息标记，与消息相关的基本在这"
+    },
+    {
+      "name": "GroupMemberController",
+      "description": "群组成员相关接口"
+    },
+    {
+      "name": "GroupController",
+      "description": "群组相关接口"
+    },
+    {
+      "name": "UserController",
+      "description": "用户接口"
+    }
+  ],
+  "paths": {
+    "/capi/group": {
+      "put": {
+        "tags": [
+          "GroupController"
+        ],
+        "summary": "更新群组信息",
+        "operationId": "updateGroup",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RoomUpdateRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResultRoomResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResult"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Method Not Allowed",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResultVoid"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResultObject"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResult"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "GroupController"
+        ],
+        "summary": "创建群组",
+        "operationId": "createGroup",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RoomCreateRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResultRoomResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResult"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Method Not Allowed",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResultVoid"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResultObject"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/capi/groupMember": {
+      "put": {
+        "tags": [
+          "GroupMemberController"
+        ],
+        "summary": "更新群组成员角色",
+        "operationId": "updateMemberRole",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RoomMemberUpdateRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResultVoid"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResult"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Method Not Allowed",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResultVoid"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResultObject"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResult"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "GroupMemberController"
+        ],
+        "summary": "添加群组成员",
+        "operationId": "addGroupMembers",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RoomMemberAddRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResultVoid"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResult"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Method Not Allowed",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResultVoid"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResultObject"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResult"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "GroupMemberController"
+        ],
+        "summary": "移除群组成员",
+        "operationId": "removeGroupMember",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RoomMemberRemoveRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResultVoid"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResult"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Method Not Allowed",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResultVoid"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResultObject"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/capi/chat/message": {
+      "get": {
+        "tags": [
+          "ChatController"
+        ],
+        "operationId": "getMessageDetail",
+        "parameters": [
+          {
+            "name": "messageId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResultMessage"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResult"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Method Not Allowed",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResultVoid"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResultObject"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResult"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "ChatController"
+        ],
+        "operationId": "updateMessage",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ChatMessageUpdateRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResultVoid"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResult"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Method Not Allowed",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResultVoid"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResultObject"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResult"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "ChatController"
+        ],
+        "operationId": "sendMessage",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ChatMessageRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResultVoid"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResult"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Method Not Allowed",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResultVoid"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResultObject"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResult"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "ChatController"
+        ],
+        "operationId": "deleteMessage",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ChatMessageDeleteRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResultVoid"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResult"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Method Not Allowed",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResultVoid"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResultObject"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/capi/user/register": {
+      "post": {
+        "tags": [
+          "UserController"
+        ],
+        "summary": "用户注册",
+        "description": "用户注册接口",
+        "operationId": "register",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserRegisterRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResultVoid"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResult"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Method Not Allowed",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResultVoid"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResultObject"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/capi/user/refresh": {
+      "post": {
+        "tags": [
+          "UserController"
+        ],
+        "summary": "刷新token",
+        "description": "刷新token接口 注意：后端返回的 token 不携带Bearer前缀",
+        "operationId": "refreshToken",
+        "parameters": [
+          {
+            "name": "refresh_token",
+            "in": "cookie",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResultString"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResult"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Method Not Allowed",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResultVoid"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResultObject"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/capi/user/login": {
+      "post": {
+        "tags": [
+          "UserController"
+        ],
+        "summary": "用户登录",
+        "description": "用户登录接口 注意：后端返回的 token 不携带Bearer前缀",
+        "operationId": "login",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserLoginRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResultLoginInfoResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResult"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Method Not Allowed",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResultVoid"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResultObject"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/capi/call/initiate": {
+      "post": {
+        "tags": [
+          "CallController"
+        ],
+        "summary": "发起通话(备用)",
+        "description": "发起语音或视频通话",
+        "operationId": "initiateCall",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CallingRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResultVoid"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResult"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Method Not Allowed",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResultVoid"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResultObject"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/capi/call/history": {
+      "post": {
+        "tags": [
+          "CallController"
+        ],
+        "summary": "获取通话历史",
+        "description": "获取用户的通话历史记录",
+        "operationId": "getCallHistory",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResultListSessionResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResult"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Method Not Allowed",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResultVoid"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResultObject"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/capi/call/cancel": {
+      "post": {
+        "tags": [
+          "CallController"
+        ],
+        "summary": "结束通话(备用)",
+        "description": "挂断正在进行的通话",
+        "operationId": "endCall",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CallingCancelRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResultVoid"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResult"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Method Not Allowed",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResultVoid"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResultObject"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/capi/user/logout": {
+      "get": {
+        "tags": [
+          "UserController"
+        ],
+        "summary": "退出登录",
+        "description": "退出登录",
+        "operationId": "logout",
+        "parameters": [
+          {
+            "name": "refresh_token",
+            "in": "cookie",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResultVoid"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResult"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Method Not Allowed",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResultVoid"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResultObject"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/capi/user/info/{id}": {
+      "get": {
+        "tags": [
+          "UserController"
+        ],
+        "summary": "获取指定用户信息",
+        "description": "获取指定用户信息",
+        "operationId": "getUserInfo",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResultUserInfoResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResult"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Method Not Allowed",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResultVoid"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResultObject"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/capi/user/info/me": {
+      "get": {
+        "tags": [
+          "UserController"
+        ],
+        "summary": "获取当前用户信息",
+        "description": "获取当前用户信息",
+        "operationId": "getUserInfo_1",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResultUserInfoResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResult"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Method Not Allowed",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResultVoid"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResultObject"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/capi/groupMember/page": {
+      "get": {
+        "tags": [
+          "GroupMemberController"
+        ],
+        "summary": "分页获取群组成员列表",
+        "operationId": "getGroupMembers",
+        "parameters": [
+          {
+            "name": "request",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/RoomMemberPageRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResultCursorPageBaseResponseRoomMember"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResult"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Method Not Allowed",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResultVoid"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResultObject"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/capi/group/{groupId}": {
+      "get": {
+        "tags": [
+          "GroupController"
+        ],
+        "summary": "获取群组信息",
+        "operationId": "getGroupInfo",
+        "parameters": [
+          {
+            "name": "groupId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResultRoomResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResult"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Method Not Allowed",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResultVoid"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResultObject"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResult"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "GroupController"
+        ],
+        "summary": "删除群组",
+        "operationId": "deleteGroup",
+        "parameters": [
+          {
+            "name": "groupId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResultVoid"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResult"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Method Not Allowed",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResultVoid"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResultObject"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/capi/group/page": {
+      "get": {
+        "tags": [
+          "GroupController"
+        ],
+        "summary": "分页获取群组列表",
+        "operationId": "getUserGroups",
+        "parameters": [
+          {
+            "name": "request",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/RoomPageRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResultCursorPageBaseResponseRoomResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResult"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Method Not Allowed",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResultVoid"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResultObject"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/capi/chat/message/page": {
+      "get": {
+        "tags": [
+          "ChatController"
+        ],
+        "operationId": "getMessageList",
+        "parameters": [
+          {
+            "name": "request",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/ChatMessagePageRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResultCursorPageBaseResponseMessage"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResult"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Method Not Allowed",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResultVoid"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResultObject"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ApiResult": {
+        "required": [
+          "success"
+        ],
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "description": "成功标识true or false"
+          },
+          "errCode": {
+            "type": "integer",
+            "description": "错误码",
+            "format": "int32"
+          },
+          "errMsg": {
+            "type": "string",
+            "description": "错误消息"
+          },
+          "data": {
+            "type": "object",
+            "description": "返回对象"
+          }
+        },
+        "description": "基础返回体"
+      },
+      "ApiResultObject": {
+        "required": [
+          "success"
+        ],
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "description": "成功标识true or false"
+          },
+          "errCode": {
+            "type": "integer",
+            "description": "错误码",
+            "format": "int32"
+          },
+          "errMsg": {
+            "type": "string",
+            "description": "错误消息"
+          },
+          "data": {
+            "type": "object",
+            "description": "返回对象"
+          }
+        },
+        "description": "基础返回体"
+      },
+      "ApiResultVoid": {
+        "required": [
+          "success"
+        ],
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "description": "成功标识true or false"
+          },
+          "errCode": {
+            "type": "integer",
+            "description": "错误码",
+            "format": "int32"
+          },
+          "errMsg": {
+            "type": "string",
+            "description": "错误消息"
+          },
+          "data": {
+            "type": "object",
+            "description": "返回对象"
+          }
+        },
+        "description": "基础返回体"
+      },
+      "RoomUpdateRequest": {
+        "required": [
+          "id"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "群组ID",
+            "format": "int64"
+          },
+          "name": {
+            "maxLength": 50,
+            "minLength": 0,
+            "type": "string",
+            "description": "群组名称"
+          },
+          "description": {
+            "maxLength": 200,
+            "minLength": 0,
+            "type": "string",
+            "description": "群组简介"
+          },
+          "avatar": {
+            "type": "string",
+            "description": "群组头像URL"
+          }
+        },
+        "description": "更新群组请求"
+      },
+      "ApiResultRoomResponse": {
+        "required": [
+          "success"
+        ],
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "description": "成功标识true or false"
+          },
+          "errCode": {
+            "type": "integer",
+            "description": "错误码",
+            "format": "int32"
+          },
+          "errMsg": {
+            "type": "string",
+            "description": "错误消息"
+          },
+          "data": {
+            "$ref": "#/components/schemas/RoomResponse"
+          }
+        },
+        "description": "基础返回体"
+      },
+      "RoomResponse": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "群组ID",
+            "format": "int64"
+          },
+          "name": {
+            "type": "string",
+            "description": "群组名称"
+          },
+          "creatorId": {
+            "type": "integer",
+            "description": "创建者用户ID",
+            "format": "int64"
+          },
+          "description": {
+            "type": "string",
+            "description": "群组简介"
+          },
+          "avatar": {
+            "type": "string",
+            "description": "群组头像URL"
+          },
+          "createdAt": {
+            "type": "string",
+            "description": "创建时间",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "description": "最后更新时间",
+            "format": "date-time"
+          },
+          "memberCount": {
+            "type": "integer",
+            "description": "成员数量",
+            "format": "int32"
+          }
+        },
+        "description": "群组信息响应"
+      },
+      "RoomMemberUpdateRequest": {
+        "required": [
+          "groupId",
+          "role",
+          "userId"
+        ],
+        "type": "object",
+        "properties": {
+          "groupId": {
+            "type": "integer",
+            "description": "群组ID",
+            "format": "int64"
+          },
+          "userId": {
+            "type": "integer",
+            "description": "要更新的用户ID",
+            "format": "int64"
+          },
+          "role": {
+            "type": "integer",
+            "description": "新的角色类型",
+            "format": "int32"
+          }
+        },
+        "description": "更新群组成员角色请求"
+      },
+      "ChatMessageResponse": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "$ref": "#/components/schemas/Message"
+          },
+          "messageMark": {
+            "type": "array",
+            "description": "消息标记",
+            "items": {
+              "$ref": "#/components/schemas/MessageMark"
+            }
+          }
+        },
+        "description": "转发的消息列表，json写死的，不会随着原来的消息而改变"
+      },
+      "ChatMessageUpdateRequest": {
+        "required": [
+          "groupId",
+          "messageID",
+          "syncId",
+          "userId"
+        ],
+        "type": "object",
+        "properties": {
+          "messageID": {
+            "type": "integer",
+            "description": "全局的ID，全局唯一，用于表示",
+            "format": "int64"
+          },
+          "syncId": {
+            "type": "integer",
+            "description": "用于确定用户发送的消息顺序，是万有一失的严格递增，session级别的Id",
+            "format": "int64"
+          },
+          "groupId": {
+            "type": "integer",
+            "description": "消息的房间号",
+            "format": "int64"
+          },
+          "userId": {
+            "type": "integer",
+            "description": "用户id",
+            "format": "int64"
+          },
+          "content": {
+            "type": "string",
+            "description": "内容"
+          },
+          "specialEffects": {
+            "type": "integer",
+            "description": "比如说，立绘的抖动，这种",
+            "format": "int32"
+          },
+          "replyMessageId": {
+            "type": "integer",
+            "description": "回复的消息id",
+            "format": "int64"
+          },
+          "messageType": {
+            "type": "integer",
+            "description": "消息类型",
+            "format": "int32"
+          },
+          "extra": {
+            "$ref": "#/components/schemas/MessageExtra"
+          }
+        }
+      },
+      "FileMessage": {
+        "required": [
+          "fileName",
+          "size",
+          "url"
+        ],
+        "type": "object",
+        "properties": {
+          "size": {
+            "type": "integer",
+            "description": "大小（字节）",
+            "format": "int64"
+          },
+          "url": {
+            "type": "string",
+            "description": "下载地址"
+          },
+          "fileName": {
+            "type": "string",
+            "description": "文件名（带后缀）"
+          }
+        }
+      },
+      "ForwardMessage": {
+        "type": "object",
+        "properties": {
+          "messageList": {
+            "maxItems": 500,
+            "minItems": 0,
+            "type": "array",
+            "description": "转发的消息列表，json写死的，不会随着原来的消息而改变",
+            "items": {
+              "$ref": "#/components/schemas/ChatMessageResponse"
+            }
+          }
+        }
+      },
+      "ImageMessage": {
+        "required": [
+          "fileName",
+          "height",
+          "size",
+          "url",
+          "width"
+        ],
+        "type": "object",
+        "properties": {
+          "size": {
+            "type": "integer",
+            "description": "大小（字节）",
+            "format": "int64"
+          },
+          "url": {
+            "type": "string",
+            "description": "下载地址"
+          },
+          "fileName": {
+            "type": "string",
+            "description": "文件名（带后缀）"
+          },
+          "width": {
+            "type": "integer",
+            "description": "宽度（像素）",
+            "format": "int32"
+          },
+          "height": {
+            "type": "integer",
+            "description": "高度（像素）",
+            "format": "int32"
+          },
+          "background": {
+            "type": "boolean"
+          }
+        }
+      },
+      "Message": {
+        "required": [
+          "content",
+          "groupId",
+          "messageID",
+          "messageType",
+          "status",
+          "syncId",
+          "userId"
+        ],
+        "type": "object",
+        "properties": {
+          "messageID": {
+            "type": "integer",
+            "description": "全局的ID，全局唯一，用于表示",
+            "format": "int64"
+          },
+          "syncId": {
+            "type": "integer",
+            "description": "用于确定用户发送的消息顺序，是万有一失的严格递增，session级别的Id",
+            "format": "int64"
+          },
+          "groupId": {
+            "type": "integer",
+            "description": "消息的房间号",
+            "format": "int64"
+          },
+          "userId": {
+            "type": "integer",
+            "description": "用户id",
+            "format": "int64"
+          },
+          "content": {
+            "type": "string",
+            "description": "内容"
+          },
+          "specialEffects": {
+            "type": "integer",
+            "description": "比如说，立绘的抖动，这种",
+            "format": "int32"
+          },
+          "replyMessageId": {
+            "type": "integer",
+            "description": "回复的消息id",
+            "format": "int64"
+          },
+          "status": {
+            "type": "integer",
+            "description": "消息状态",
+            "format": "int32"
+          },
+          "messageType": {
+            "type": "integer",
+            "description": "消息类型",
+            "format": "int32"
+          },
+          "extra": {
+            "$ref": "#/components/schemas/MessageExtra"
+          },
+          "createTime": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updateTime": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "description": "Message"
+      },
+      "MessageExtra": {
+        "type": "object",
+        "properties": {
+          "fileMessage": {
+            "$ref": "#/components/schemas/FileMessage"
+          },
+          "imageMessage": {
+            "$ref": "#/components/schemas/ImageMessage"
+          },
+          "forwardMessage": {
+            "$ref": "#/components/schemas/ForwardMessage"
+          }
+        },
+        "description": "不同类型消息持有的额外信息"
+      },
+      "MessageMark": {
+        "type": "object",
+        "properties": {
+          "messageMarkId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "messageId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "roleId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "type": {
+            "type": "integer",
+            "description": "消息类型",
+            "format": "int64"
+          },
+          "avatarId": {
+            "type": "integer",
+            "description": "回复的",
+            "format": "int64"
+          },
+          "createTime": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updateTime": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "description": "MessageMark"
+      },
+      "UserRegisterRequest": {
+        "required": [
+          "password",
+          "username"
+        ],
+        "type": "object",
+        "properties": {
+          "username": {
+            "maxLength": 20,
+            "minLength": 2,
+            "type": "string",
+            "description": "用户名"
+          },
+          "password": {
+            "maxLength": 20,
+            "minLength": 6,
+            "type": "string",
+            "description": "密码"
+          }
+        }
+      },
+      "ApiResultString": {
+        "required": [
+          "success"
+        ],
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "description": "成功标识true or false"
+          },
+          "errCode": {
+            "type": "integer",
+            "description": "错误码",
+            "format": "int32"
+          },
+          "errMsg": {
+            "type": "string",
+            "description": "错误消息"
+          },
+          "data": {
+            "type": "string",
+            "description": "返回对象"
+          }
+        },
+        "description": "基础返回体"
+      },
+      "UserLoginRequest": {
+        "required": [
+          "password",
+          "username"
+        ],
+        "type": "object",
+        "properties": {
+          "username": {
+            "type": "string",
+            "description": "登录的用户名"
+          },
+          "password": {
+            "type": "string",
+            "description": "登录的用户密码，进行了加密传输"
+          }
+        }
+      },
+      "ApiResultLoginInfoResponse": {
+        "required": [
+          "success"
+        ],
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "description": "成功标识true or false"
+          },
+          "errCode": {
+            "type": "integer",
+            "description": "错误码",
+            "format": "int32"
+          },
+          "errMsg": {
+            "type": "string",
+            "description": "错误消息"
+          },
+          "data": {
+            "$ref": "#/components/schemas/LoginInfoResponse"
+          }
+        },
+        "description": "基础返回体"
+      },
+      "LoginInfoResponse": {
+        "type": "object",
+        "properties": {
+          "userId": {
+            "type": "integer",
+            "description": "用户的uid，全局唯一",
+            "format": "int64"
+          },
+          "username": {
+            "type": "string",
+            "description": "用户名"
+          },
+          "avatar": {
+            "type": "string",
+            "description": "用户头像"
+          },
+          "activeStatus": {
+            "type": "integer",
+            "description": "1在线 2离线",
+            "format": "int32"
+          },
+          "lastLoginTime": {
+            "type": "string",
+            "description": "最后一次上下线时间",
+            "format": "date-time"
+          },
+          "accessToken": {
+            "type": "string",
+            "description": "access_token 注意：后端返回的 token 不携带Bearer前缀"
+          }
+        },
+        "description": "返回对象"
+      },
+      "RoomCreateRequest": {
+        "required": [
+          "name"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "maxLength": 50,
+            "minLength": 0,
+            "type": "string",
+            "description": "群组名称"
+          },
+          "description": {
+            "maxLength": 200,
+            "minLength": 0,
+            "type": "string",
+            "description": "群组简介"
+          },
+          "avatar": {
+            "type": "string",
+            "description": "群组头像URL"
+          },
+          "type": {
+            "type": "integer",
+            "description": "群组类型",
+            "format": "int32"
+          },
+          "memberIds": {
+            "type": "array",
+            "description": "初始成员用户ID列表",
+            "items": {
+              "type": "integer",
+              "description": "初始成员用户ID列表",
+              "format": "int64"
+            }
+          }
+        },
+        "description": "创建群组请求"
+      },
+      "RoomMemberAddRequest": {
+        "required": [
+          "groupId",
+          "userIds"
+        ],
+        "type": "object",
+        "properties": {
+          "groupId": {
+            "type": "integer",
+            "description": "群组ID",
+            "format": "int64"
+          },
+          "userIds": {
+            "type": "array",
+            "description": "要添加的用户ID列表",
+            "items": {
+              "type": "integer",
+              "description": "要添加的用户ID列表",
+              "format": "int64"
+            }
+          }
+        },
+        "description": "添加群组成员请求"
+      },
+      "ChatMessageRequest": {
+        "required": [
+          "body",
+          "content",
+          "groupId",
+          "messageType"
+        ],
+        "type": "object",
+        "properties": {
+          "groupId": {
+            "type": "integer",
+            "description": "房间id",
+            "format": "int64"
+          },
+          "messageType": {
+            "type": "integer",
+            "description": "消息类型",
+            "format": "int32"
+          },
+          "content": {
+            "maxLength": 1024,
+            "minLength": 0,
+            "type": "string",
+            "description": "消息内容"
+          },
+          "replayMessageId": {
+            "type": "integer",
+            "description": "回复的消息id,如果没有别传就好",
+            "format": "int64"
+          },
+          "body": {
+            "type": "object",
+            "description": "消息内容，类型不同传值不同."
+          }
+        }
+      },
+      "CallingRequest": {
+        "type": "object",
+        "properties": {
+          "callerId": {
+            "type": "integer",
+            "description": "发起信令的用户ID",
+            "format": "int64"
+          },
+          "receiverId": {
+            "type": "array",
+            "description": "处理信令的用户ID",
+            "items": {
+              "type": "integer",
+              "description": "处理信令的用户ID",
+              "format": "int64"
+            }
+          },
+          "type": {
+            "type": "integer",
+            "description": "信令类型",
+            "format": "int32"
+          },
+          "callType": {
+            "type": "integer",
+            "description": "通话类型：1-语音通话，2-视频通话",
+            "format": "int32"
+          },
+          "sessionType": {
+            "type": "integer",
+            "description": "会话类型 1一对一通话 2群聊",
+            "format": "int32"
+          },
+          "subject": {
+            "type": "string",
+            "description": "会话主题 单独通话不需要"
+          },
+          "expireTime": {
+            "type": "integer",
+            "description": "通话请求的过期时间戳",
+            "format": "int64"
+          },
+          "extra": {
+            "type": "integer",
+            "description": "额外信息",
+            "format": "int32"
+          }
+        }
+      },
+      "ApiResultListSessionResponse": {
+        "required": [
+          "success"
+        ],
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "description": "成功标识true or false"
+          },
+          "errCode": {
+            "type": "integer",
+            "description": "错误码",
+            "format": "int32"
+          },
+          "errMsg": {
+            "type": "string",
+            "description": "错误消息"
+          },
+          "data": {
+            "type": "array",
+            "description": "返回对象",
+            "items": {
+              "$ref": "#/components/schemas/SessionResponse"
+            }
+          }
+        },
+        "description": "基础返回体"
+      },
+      "SessionResponse": {
+        "type": "object",
+        "properties": {
+          "sessionId": {
+            "type": "integer",
+            "description": "会话ID",
+            "format": "int64"
+          },
+          "callType": {
+            "type": "integer",
+            "description": "通话类型：1-语音通话，2-视频通话",
+            "format": "int32"
+          },
+          "creatorId": {
+            "type": "integer",
+            "description": "创建者用户ID",
+            "format": "int64"
+          },
+          "subject": {
+            "type": "string",
+            "description": "会话主题 单独通话不需要"
+          },
+          "status": {
+            "type": "integer",
+            "description": "会话状态 0等待 1进行 2结束",
+            "format": "int32"
+          },
+          "createTime": {
+            "type": "string",
+            "description": "开始时间",
+            "format": "date-time"
+          },
+          "endTime": {
+            "type": "string",
+            "description": "结束时间",
+            "format": "date-time"
+          }
+        },
+        "description": "返回对象"
+      },
+      "CallingCancelRequest": {
+        "type": "object",
+        "properties": {
+          "callerId": {
+            "type": "integer",
+            "description": "发起信令的用户ID",
+            "format": "int64"
+          },
+          "receiverId": {
+            "type": "integer",
+            "description": "处理信令的用户ID",
+            "format": "int64"
+          },
+          "sessionId": {
+            "type": "integer",
+            "description": "会话id",
+            "format": "int64"
+          },
+          "expireTime": {
+            "type": "integer",
+            "description": "通话请求的过期时间戳",
+            "format": "int64"
+          },
+          "sessionType": {
+            "type": "integer",
+            "description": "会话类型 1一对一通话 2群聊",
+            "format": "int32"
+          },
+          "cancelReason": {
+            "type": "integer",
+            "description": "挂断原因：1-正常挂断，2-网络问题，3-其他原因",
+            "format": "int32"
+          }
+        }
+      },
+      "ApiResultUserInfoResponse": {
+        "required": [
+          "success"
+        ],
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "description": "成功标识true or false"
+          },
+          "errCode": {
+            "type": "integer",
+            "description": "错误码",
+            "format": "int32"
+          },
+          "errMsg": {
+            "type": "string",
+            "description": "错误消息"
+          },
+          "data": {
+            "$ref": "#/components/schemas/UserInfoResponse"
+          }
+        },
+        "description": "基础返回体"
+      },
+      "UserInfoResponse": {
+        "required": [
+          "userId"
+        ],
+        "type": "object",
+        "properties": {
+          "userId": {
+            "type": "integer",
+            "description": "用户的uid，全局唯一",
+            "format": "int64"
+          },
+          "username": {
+            "type": "string",
+            "description": "用户名"
+          },
+          "avatar": {
+            "type": "string",
+            "description": "头像的url"
+          },
+          "activeStatus": {
+            "type": "string",
+            "description": "1在线 2离线",
+            "format": "byte"
+          },
+          "lastLoginTime": {
+            "type": "string",
+            "description": "最后一次上下线时间",
+            "format": "date-time"
+          }
+        },
+        "description": "返回对象"
+      },
+      "RoomMemberPageRequest": {
+        "required": [
+          "groupId"
+        ],
+        "type": "object",
+        "properties": {
+          "cursor": {
+            "type": "number",
+            "description": "游标（上次翻页的最后一条记录的标识）",
+            "format": "double"
+          },
+          "pageSize": {
+            "type": "integer",
+            "description": "每页大小",
+            "format": "int32"
+          },
+          "groupId": {
+            "type": "integer",
+            "description": "群组ID",
+            "format": "int64"
+          }
+        },
+        "description": "群组成员分页请求"
+      },
+      "ApiResultCursorPageBaseResponseRoomMember": {
+        "required": [
+          "success"
+        ],
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "description": "成功标识true or false"
+          },
+          "errCode": {
+            "type": "integer",
+            "description": "错误码",
+            "format": "int32"
+          },
+          "errMsg": {
+            "type": "string",
+            "description": "错误消息"
+          },
+          "data": {
+            "$ref": "#/components/schemas/CursorPageBaseResponseRoomMember"
+          }
+        },
+        "description": "基础返回体"
+      },
+      "CursorPageBaseResponseRoomMember": {
+        "type": "object",
+        "properties": {
+          "cursor": {
+            "type": "number",
+            "description": "游标（下次翻页带上这参数）",
+            "format": "double"
+          },
+          "isLast": {
+            "type": "boolean",
+            "description": "是否最后一页"
+          },
+          "list": {
+            "type": "array",
+            "description": "数据列表",
+            "items": {
+              "$ref": "#/components/schemas/RoomMember"
+            }
+          }
+        },
+        "description": "游标翻页返回"
+      },
+      "RoomMember": {
+        "type": "object",
+        "properties": {
+          "memberId": {
+            "type": "integer",
+            "description": "成员关系ID",
+            "format": "int64"
+          },
+          "roomId": {
+            "type": "integer",
+            "description": "群组ID",
+            "format": "int64"
+          },
+          "userId": {
+            "type": "integer",
+            "description": "用户ID",
+            "format": "int64"
+          },
+          "nickname": {
+            "type": "string",
+            "description": "群昵称"
+          },
+          "role": {
+            "type": "integer",
+            "description": "成员角色",
+            "format": "int32"
+          },
+          "joinTime": {
+            "type": "string",
+            "description": "加入时间",
+            "format": "date-time"
+          }
+        },
+        "description": "数据列表"
+      },
+      "RoomPageRequest": {
+        "type": "object",
+        "properties": {
+          "cursor": {
+            "type": "number",
+            "description": "游标（上次翻页的最后一条记录的标识）",
+            "format": "double"
+          },
+          "pageSize": {
+            "type": "integer",
+            "description": "每页大小",
+            "format": "int32"
+          },
+          "keyword": {
+            "type": "string",
+            "description": "群组名称关键字"
+          }
+        },
+        "description": "群组分页请求"
+      },
+      "ApiResultCursorPageBaseResponseRoomResponse": {
+        "required": [
+          "success"
+        ],
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "description": "成功标识true or false"
+          },
+          "errCode": {
+            "type": "integer",
+            "description": "错误码",
+            "format": "int32"
+          },
+          "errMsg": {
+            "type": "string",
+            "description": "错误消息"
+          },
+          "data": {
+            "$ref": "#/components/schemas/CursorPageBaseResponseRoomResponse"
+          }
+        },
+        "description": "基础返回体"
+      },
+      "CursorPageBaseResponseRoomResponse": {
+        "type": "object",
+        "properties": {
+          "cursor": {
+            "type": "number",
+            "description": "游标（下次翻页带上这参数）",
+            "format": "double"
+          },
+          "isLast": {
+            "type": "boolean",
+            "description": "是否最后一页"
+          },
+          "list": {
+            "type": "array",
+            "description": "数据列表",
+            "items": {
+              "$ref": "#/components/schemas/RoomResponse"
+            }
+          }
+        },
+        "description": "游标翻页返回"
+      },
+      "ApiResultMessage": {
+        "required": [
+          "success"
+        ],
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "description": "成功标识true or false"
+          },
+          "errCode": {
+            "type": "integer",
+            "description": "错误码",
+            "format": "int32"
+          },
+          "errMsg": {
+            "type": "string",
+            "description": "错误消息"
+          },
+          "data": {
+            "$ref": "#/components/schemas/Message"
+          }
+        },
+        "description": "基础返回体"
+      },
+      "ChatMessagePageRequest": {
+        "required": [
+          "groupId"
+        ],
+        "type": "object",
+        "properties": {
+          "cursor": {
+            "type": "number",
+            "description": "游标（上次翻页的最后一条记录的标识）",
+            "format": "double"
+          },
+          "pageSize": {
+            "type": "integer",
+            "description": "每页大小",
+            "format": "int32"
+          },
+          "groupId": {
+            "type": "integer",
+            "description": "会话id",
+            "format": "int64"
+          }
+        },
+        "description": "聊天分页请求"
+      },
+      "ApiResultCursorPageBaseResponseMessage": {
+        "required": [
+          "success"
+        ],
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "description": "成功标识true or false"
+          },
+          "errCode": {
+            "type": "integer",
+            "description": "错误码",
+            "format": "int32"
+          },
+          "errMsg": {
+            "type": "string",
+            "description": "错误消息"
+          },
+          "data": {
+            "$ref": "#/components/schemas/CursorPageBaseResponseMessage"
+          }
+        },
+        "description": "基础返回体"
+      },
+      "CursorPageBaseResponseMessage": {
+        "type": "object",
+        "properties": {
+          "cursor": {
+            "type": "number",
+            "description": "游标（下次翻页带上这参数）",
+            "format": "double"
+          },
+          "isLast": {
+            "type": "boolean",
+            "description": "是否最后一页"
+          },
+          "list": {
+            "type": "array",
+            "description": "数据列表",
+            "items": {
+              "$ref": "#/components/schemas/Message"
+            }
+          }
+        },
+        "description": "游标翻页返回"
+      },
+      "RoomMemberRemoveRequest": {
+        "required": [
+          "groupId",
+          "userId"
+        ],
+        "type": "object",
+        "properties": {
+          "groupId": {
+            "type": "integer",
+            "description": "群组ID",
+            "format": "int64"
+          },
+          "userId": {
+            "type": "integer",
+            "description": "要移除的用户ID",
+            "format": "int64"
+          }
+        },
+        "description": "移除群组成员请求"
+      },
+      "ChatMessageDeleteRequest": {
+        "required": [
+          "groupId",
+          "messageID",
+          "ownerId"
+        ],
+        "type": "object",
+        "properties": {
+          "messageID": {
+            "type": "integer",
+            "description": "全局的ID，全局唯一，用于表示",
+            "format": "int64"
+          },
+          "groupId": {
+            "type": "integer",
+            "description": "消息的房间号",
+            "format": "int64"
+          },
+          "ownerId": {
+            "type": "integer",
+            "description": "消息所属的用户id",
+            "format": "int64"
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "Authorization": {
+        "type": "http",
+        "scheme": "Bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  },
+  "x-openapi": {
+    "x-setting": {
+      "customCode": 200,
+      "language": "zh-CN",
+      "enableSwaggerModels": true,
+      "swaggerModelName": "Swagger Models",
+      "enableReloadCacheParameter": false,
+      "enableAfterScript": true,
+      "enableDocumentManage": true,
+      "enableVersion": false,
+      "enableRequestCache": true,
+      "enableFilterMultipartApis": false,
+      "enableFilterMultipartApiMethodType": "POST",
+      "enableHost": false,
+      "enableHostText": "",
+      "enableDynamicParameter": false,
+      "enableDebug": true,
+      "enableFooter": true,
+      "enableFooterCustom": false,
+      "enableSearch": true,
+      "enableOpenApi": true,
+      "enableHomeCustom": false,
+      "enableGroup": true,
+      "enableResponseCode": true
+    },
+    "x-markdownFiles": []
+  }
+}

@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { useState, useRef } from 'react';
 import { Phone, PhoneOff, Video, VideoOff, Mic, MicOff, Users } from 'lucide-react';
-import { useWebRTC } from '../hooks/useWebRTC';
 
 interface CallModalProps {
   isOpen: boolean;
@@ -17,27 +16,30 @@ const CallModal: React.FC<CallModalProps> = ({
   isVideoCall,
   isIncoming = false,
 }) => {
-  const {
-    isCallActive,
-    isVideoEnabled,
-    isAudioEnabled,
-    localVideoRef,
-    remoteVideoRef,
-    startCall,
-    endCall,
-    toggleVideo,
-    toggleAudio,
-  } = useWebRTC();
+  const [isCallActive, setIsCallActive] = useState(false);
+  const [isVideoEnabled, setIsVideoEnabled] = useState(true);
+  const [isAudioEnabled, setIsAudioEnabled] = useState(true);
+  
+  const localVideoRef = useRef<HTMLVideoElement>(null);
+  const remoteVideoRef = useRef<HTMLVideoElement>(null);
 
   if (!isOpen) return null;
 
   const handleAcceptCall = () => {
-    startCall();
+    setIsCallActive(true);
   };
 
   const handleEndCall = () => {
-    endCall();
+    setIsCallActive(false);
     onClose();
+  };
+
+  const toggleVideo = () => {
+    setIsVideoEnabled(!isVideoEnabled);
+  };
+
+  const toggleAudio = () => {
+    setIsAudioEnabled(!isAudioEnabled);
   };
 
   return (

@@ -21,7 +21,6 @@ import {
   Upload,
   Key,
   Lock,
-  X
 } from 'lucide-react';
 import { Theme, UserProfile } from '../types';
 import { userAPI, authAPI } from '../utils/api';
