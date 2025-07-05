@@ -1,9 +1,9 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Send, Smile, Paperclip, Phone, Video, MoreHorizontal, Reply, Copy, Trash2, MessageCircle, ArrowLeft } from 'lucide-react';
-import { Message } from '../types';
-import Avatar from './common/Avatar';
-import Input from './common/Input';
-import Button from './common/Button';
+import { Message } from '../../types';
+import Avatar from '../common/Avatar.tsx';
+import Input from '../common/Input.tsx';
+import Button from '../common/Button.tsx';
 
 interface MessageAreaProps {
   selectedChat: string | null;
@@ -12,6 +12,7 @@ interface MessageAreaProps {
   isOnline: boolean;
   messages: Message[];
   onSendMessage: (content: string, type: string) => void;
+  onBack?: () => void;
 }
 
 const MessageArea: React.FC<MessageAreaProps> = ({
@@ -20,7 +21,8 @@ const MessageArea: React.FC<MessageAreaProps> = ({
   isGroup,
   isOnline,
   messages,
-  onSendMessage
+  onSendMessage,
+  onBack
 }) => {
   const [messageText, setMessageText] = useState('');
   const [showContextMenu, setShowContextMenu] = useState<{
@@ -82,7 +84,10 @@ const MessageArea: React.FC<MessageAreaProps> = ({
       <div className="h-16 bg-slate-800 dark:bg-slate-800 light:bg-gray-100 border-b border-slate-700 dark:border-slate-700 light:border-gray-200 flex items-center justify-between px-6 flex-shrink-0">
         <div className="flex items-center">
           {/* 移动端返回按钮 */}
-          <button className="md:hidden p-2 text-slate-400 dark:text-slate-400 light:text-gray-600 hover:text-white dark:hover:text-white light:hover:text-gray-900 hover:bg-slate-700 dark:hover:bg-slate-700 light:hover:bg-gray-200 rounded-lg transition-colors mr-2">
+          <button 
+            onClick={onBack}
+            className="md:hidden p-2 text-slate-400 dark:text-slate-400 light:text-gray-600 hover:text-white dark:hover:text-white light:hover:text-gray-900 hover:bg-slate-700 dark:hover:bg-slate-700 light:hover:bg-gray-200 rounded-lg transition-colors mr-2"
+          >
             <ArrowLeft className="w-5 h-5" />
           </button>
           

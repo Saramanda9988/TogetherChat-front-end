@@ -883,7 +883,7 @@
         "tags": [
           "CallController"
         ],
-        "summary": "发起通话(备用)",
+        "summary": "发起通话",
         "description": "发起语音或视频通话",
         "operationId": "initiateCall",
         "requestBody": {
@@ -902,7 +902,7 @@
             "content": {
               "*/*": {
                 "schema": {
-                  "$ref": "#/components/schemas/ApiResultVoid"
+                  "$ref": "#/components/schemas/ApiResultSessionInfoResponse"
                 }
               }
             }
@@ -1017,7 +1017,7 @@
         "tags": [
           "CallController"
         ],
-        "summary": "结束通话(备用)",
+        "summary": "结束通话",
         "description": "挂断正在进行的通话",
         "operationId": "endCall",
         "requestBody": {
@@ -2390,6 +2390,46 @@
             "format": "int32"
           }
         }
+      },
+      "ApiResultSessionInfoResponse": {
+        "required": [
+          "success"
+        ],
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "description": "成功标识true or false"
+          },
+          "errCode": {
+            "type": "integer",
+            "description": "错误码",
+            "format": "int32"
+          },
+          "errMsg": {
+            "type": "string",
+            "description": "错误消息"
+          },
+          "data": {
+            "$ref": "#/components/schemas/SessionInfoResponse"
+          }
+        },
+        "description": "基础返回体"
+      },
+      "SessionInfoResponse": {
+        "type": "object",
+        "properties": {
+          "sessionId": {
+            "type": "integer",
+            "description": "会话ID",
+            "format": "int64"
+          },
+          "key": {
+            "type": "string",
+            "description": "会话密钥"
+          }
+        },
+        "description": "会话信息响应体"
       },
       "ApiResultListSessionResponse": {
         "required": [

@@ -1,8 +1,8 @@
 import React from 'react';
 import { Search, Plus, UserPlus, MessageSquarePlus, PhoneCall, Phone, Video, Users, MoreHorizontal } from 'lucide-react';
-import { Chat } from '../types';
-import Avatar from './common/Avatar';
-import Input from './common/Input';
+import { Chat } from '../../types';
+import Avatar from '../common/Avatar.tsx';
+import Input from '../common/Input.tsx';
 
 interface ChatListProps {
   chats: Chat[];
